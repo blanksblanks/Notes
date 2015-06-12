@@ -46,26 +46,30 @@ problem classification, compilers, etc. Programming is writing programs that do
 what they have been designed to do and can be maintained. Let’s call computer
 science "the science of computation": running some algorithm, or set of
 instructions, on inputs, to produce some output, or solution.
+
 2. _What is binary?_
 Computers only understand zeroes and ones, an alphabet called binary. While
 humans use decimal, which has 10 digits 0-9, computers only understand binary,
 which has two digits, 0 and 1. With just two digits, we can still represent
 almost every possible piece of information. Binary represents numbers in the
 same pattern, but using powers of 2 instead of powers of 10 that decimal uses.
+
 3. _What are bits?_
 Bits (binary digits) are the smallest unit of storage in a computer, storing
 data of a 0 or 1.
+
 4. _What are bytes?_
 Bytes are a unit of data that are eight binary digits long; typically at the
 smallest scale in the computer, we group information in bits and bytes.
+
 5. _What is ASCII?_
 ASCII (American Standard Code for Information Interchange) is an encoding by
 which each alphabetic, numeric or special character is mapped to a 7-bit binary
 number. There are only 128 possible characters defined in ASCII, though Unicode
 exists as an effort to include a more international encoding standard for use
 with different languages and writing systems.
-6. _What are algorithms?_
-Using pseudo code, write an algorithm that will reverse a string.
+
+6. _What are algorithms? Using pseudo code, write an algorithm that will reverse a string._
 Algorithms are just a step-by-step set of operations to be performed in
 calculations or other problem-solving exercises, typically by a computer.
 Note: Pseudocode is written similarly to Python, but wouldn not actually work
@@ -148,6 +152,7 @@ int add(int x, int y) {
 
 2. _List the different types used in C along with their size. What’s the
 difference between int, float and double?_
+```
  char    1 byte
  short   2 bytes
  int     4 bytes
@@ -157,6 +162,7 @@ difference between int, float and double?_
  pointer 8 bytes
  struct  - varies depending on its components, for example a struct with a
            (x,y) coordinate where x and y are both ints would be 8 bytes
+```
 Also note that these sizes can vary system to system; I verified the sizes on
 my system for these different types with sizeof(). As the name suggests, int
 only stores integers, and because it is 4 bytes (or 32 bits), it can store
@@ -167,6 +173,7 @@ double precision floating type. Since floats are 32 bits, this gives us 23 bits
 for the significand, 8 bits for exponent and 1 sign bit; while the 64-bit
 double gives us double the precision, which translates to 52 bits of
 significand, 11 bits of exponent and 1 sign bit. 
+
 3. _What are variables? How might we use them in our program?_
 Variables are named identifiers associated with a chunk of stored data. We use
 variable names in our programs as a way to reference stored values, for example
@@ -175,6 +182,7 @@ pre-computed values. By separating the name and value, we can also reassign new
 values for the old variable. Typically, functions dealing with variables can be
 split into accessor or mutator functions – as the name hints, we can either
 access the stored values or change the stored values.
+
 4. _How do we declare variables in C?_
 Since C is a static type, variable declaration looks like this: ```[type] [name] =
 [value or expression]```. For example we can assign a float type variable the name
@@ -182,11 +190,14 @@ wight and value of 14.2 using: ```float weight = 14.2```. After the declaration 
 can just refer to the variable by its name without its type. We can also simply
 declare an uninitalized variable and define / assign it a value later: ```[type]
 [name]```, e.g. ```float weight;```
+
 5. _How do we create strings in C?_
 You can store a literal string in a type char * variable as in char *myString = "Here is a string";
+
 6. _What is a char*?_
 A char * is a pointer to a char variable, which can be treated like a char
 array that can represent a string.
+
 7. _Write a simple if/else statement in C._
 ```c
 if (rank == 1) {
@@ -195,22 +206,36 @@ if (rank == 1) {
     printf("You almost won…");
 }
 ```
+
 8. _Explain what functions are and they help us write better code?_
 Functions are 
+
 9. _Describe how strings are represented in C. What is the null terminator character?_
+
 10. _What is an array? How are they represented in C? How are strings and arrays related in C?_
+
 11. _What does void represent?_
+
 12. _What is argv? How does it work?_
+
 13. _What is a struct and why are they useful? Write a struct that represents
 an employee where an employ has a name, department, title and number of years
 on the job._ 
+
 14. _What is a memory address?_
+
 15. _What are pointers? How do we use them when programming in C?_
+
 16. _What is memory?_
+
 17. _How do we ask the operating system for memory using C?_
+
 18. _What is a segmentation fault?_
+
 19. _Describe what a memory leak is. How can we avoid them?_
+
 20. _What does it mean to pass-by-reference?_
+
 21. _What is the difference between the stack and the heap? How does C use these
 data structures to perform memory management? You should explain, step-bystep,
 the process and key functions used in C to accomplish this._
@@ -223,45 +248,65 @@ the process and key functions used in C to accomplish this._
 3. _What are the difference between class methods and instance methods?_
 
 4. _What does it mean to send a message in Objective-C? Give an example of how this works._
+
 5. _What are alloc and init? What are they used for? What C functions do they remind you of?_
+
 6. _How does memory management work in Objective-C? How does it differ and/or
 resemble memory management in C?_
+
 7. _What is NSString? How is it different from a regular C string?_
 
 8. _Name some ways that we can create arrays in Objective-C? How is this
 different from how we create arrays in C?_
 
 9. _Explain what properties are._
+
 10. _What are instance variables?_
+
 11. _Explain what self is._
+
 12. _How does inheritance work in Objective-C?_
+
 13. _How do we override methods?_
+
 14. _Explain the "super" keyword._
+
 15. _Explain the inheritance hierarchy._
+
 16. _What are strong references?_
 Strong means that you own the object that you will reference with this
 property/variable. Compiler will make sure that any objects that you assign to
 this property will not be destroyed as long as you point it with a strong
 reference.
+
 17. _What are weak references?_
 Weak means that you dont want to have control over the object's lifetime. The
 object is only "ali    ve" because another object holds a strong reference to
 it. Once that is no longer the case, the object will be destroyed, and the
 weak property will be set to nill.
+
 18. _What are some ways that we can prevent memory leaks?_
+
 19. _What are immutable objects in Objective-C? Name some immutable objects._
+
 20. _What is the difference between an NSSet and an NSMutableSet?_
+
 21. _What is the difference between NSDictionary and NSMutable Dictionary?_
+
 22. _What are #import and #include used for?_
+
 23. _What are global variables?_
+
 24. _Explain what a callback is. How might callbacks be useful?_
+
 25. _Explain what a block is, what would we use one for?_
+
 26. _What are protocols? What do we use them for?_
 Protocols declare methods that can be implemented by any class. Used to provide
 a way for classes to share the same method and property declarations without
 inheriting them.
 
-Problem Solving
+### Problem Solving
 
 1) _Write a function that cubes the sum of three numbers and returns the
 result. Please complete this problem using C._

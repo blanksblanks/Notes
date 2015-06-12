@@ -176,12 +176,12 @@ values for the old variable. Typically, functions dealing with variables can be
 split into accessor or mutator functions – as the name hints, we can either
 access the stored values or change the stored values.
 4. _How do we declare variables in C?_
-Since C is a static type, variable declaration looks like this: [type] [name] =
-[value or expression]. For example we can assign a float type variable the name
-wight and value of 14.2 using: float weight = 14.2. After the declaration you
+Since C is a static type, variable declaration looks like this: ```[type] [name] =
+[value or expression]```. For example we can assign a float type variable the name
+wight and value of 14.2 using: ```float weight = 14.2```. After the declaration you
 can just refer to the variable by its name without its type. We can also simply
-declare an uninitalized variable and define / assign it a value later: [type]
-[name], e.g. float weight;
+declare an uninitalized variable and define / assign it a value later: ```[type]
+[name]```, e.g. ```float weight;```
 5. _How do we create strings in C?_
 You can store a literal string in a type char * variable as in char *myString = "Here is a string";
 6. _What is a char*?_
@@ -241,7 +241,7 @@ different from how we create arrays in C?_
 16. _What are strong references?_
 Strong means that you own the object that you will reference with this
 property/variable. Compiler will make sure that any objects that you assign to
-this property will not be destroyed as long as you p    oint it with a strong
+this property will not be destroyed as long as you point it with a strong
 reference.
 17. _What are weak references?_
 Weak means that you dont want to have control over the object's lifetime. The
@@ -266,8 +266,8 @@ Problem Solving
 1) _Write a function that cubes the sum of three numbers and returns the
 result. Please complete this problem using C._
 
-Compile with $ gcc sumcubed.c -o sumcubed
-Run with  $ ./sumcubed
+Compile with ```$ gcc sumcubed.c -o sumcubed```
+Run with  ```$ ./sumcubed```
 
 The program asks the user to input three numbers when the program runs (not as command-line arguments).
 
@@ -299,8 +299,8 @@ int main (int argc, char **argv) {
 we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the
 multiples of 3 or 5 below 1000. Please complete this problem using C._
 
-Compile with $ gcc multsummed.c -o multsummed
-Run with  $ ./multsummed
+Compile with ```$ gcc multsummed.c -o multsummed```
+Run with  ```$ ./multsummed```
 
 ```c
 //

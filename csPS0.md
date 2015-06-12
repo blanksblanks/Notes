@@ -39,32 +39,33 @@ Full Name: Nina Baculinao
 Email address: nb2406@columbia.edu
 
 ### Programming Basics 
-1. To the best of your ability, describe the difference between programming and computer science. 
+1. _To the best of your ability, describe the difference between programming and computer science._ 
 Computer science is the theoretical study of what computation is and what
 computers can do; it’s concerned with runtime complexity, NP-hard/complete
 problem classification, compilers, etc. Programming is writing programs that do
 what they have been designed to do and can be maintained. Let’s call computer
 science "the science of computation": running some algorithm, or set of
 instructions, on inputs, to produce some output, or solution.
-2. What is binary?
+2. _What is binary?_
 Computers only understand zeroes and ones, an alphabet called binary. While
 humans use decimal, which has 10 digits 0-9, computers only understand binary,
 which has two digits, 0 and 1. With just two digits, we can still represent
 almost every possible piece of information. Binary represents numbers in the
 same pattern, but using powers of 2 instead of powers of 10 that decimal uses.
-3. What are bits? 
+3. _What are bits?_
 Bits (binary digits) are the smallest unit of storage in a computer, storing
 data of a 0 or 1.
-4. What are bytes?
+4. _What are bytes?_
 Bytes are a unit of data that are eight binary digits long; typically at the
 smallest scale in the computer, we group information in bits and bytes.
-5. What is ASCII?
+5. _What is ASCII?_
 ASCII (American Standard Code for Information Interchange) is an encoding by
 which each alphabetic, numeric or special character is mapped to a 7-bit binary
 number. There are only 128 possible characters defined in ASCII, though Unicode
 exists as an effort to include a more international encoding standard for use
 with different languages and writing systems.
-6. What are algorithms? Using pseudo code, write an algorithm that will reverse a string.
+6. _What are algorithms?_
+Using pseudo code, write an algorithm that will reverse a string.
 Algorithms are just a step-by-step set of operations to be performed in
 calculations or other problem-solving exercises, typically by a computer.
 Note: Pseudocode is written similarly to Python, but wouldn not actually work
@@ -77,7 +78,7 @@ for (idx = 0; idx != len(str)/2; i++):
     str[len(str)-idx-1] = temp
 ```
 
-7. What does it mean to compile your code? Describe how a compiler works. 
+7. _What does it mean to compile your code? Describe how a compiler works._ 
 Compiling your code is the act of translating your source code written in a
 high-level programming language such as C, Java, Python, etc. into the native
 machine code of your computer. A compiler is a program that translates the
@@ -90,9 +91,9 @@ code is to create an executable program. In short, a compiler converts a
 program from a human-readable format into a machine-readable instructions.
 Every compiler is written to process source files in a particular language. 
 
-8. What is the new line character? How does it work?
+8. _What is the new line character? How does it work?_
 In Unix systems, the newline character is represented by the escape
-sequence '\n '; in Windows system it is represented by two characters '\n\r '
+sequence ```\n```; in Windows system it is represented by two characters ```\n\r```
 (where \r is carriage return, originating from the need to manually push the
 cartridge back into a starting position in the days of typewriters). If we were
 writing a printf() statement in a C program, we include a newline character
@@ -104,7 +105,7 @@ text file in, for example a C program, we typically read/scan the file line by
 line, using the newlines to find out where an old line ends and a new one
 begins.
 
-9. What is the terminal or command line? How can we use it as developers?
+9. _What is the terminal or command line? How can we use it as developers?_
 The terminal / command-line interface is a user interface that we can use to
 interact with our computer’s operating system and execute various programs.
 It’s a more concise and powerful way we can control our computer compared to
@@ -119,8 +120,8 @@ version control for our files using git commands, change our system
 preferences, and so on. 
 
 ### The C Programming Language 
-1. What are header files and what are they used for? Write an example of how
-you would use a header file below.
+1. _What are header files and what are they used for? Write an example of how
+you would use a header file below._
  Header files are files that end with .h where you can include the declaration
 / protype / signature of  functions defined in a .c file with the same prefix.
 It is used during the compiling phase, before linking. A typical header file
@@ -145,7 +146,8 @@ int add(int x, int y) {
 }
 ```
 
-2. List the different types used in C along with their size. What’s the difference between int, float and double?
+2. _List the different types used in C along with their size. What’s the
+difference between int, float and double?_
  char    1 byte
  short   2 bytes
  int     4 bytes
@@ -165,7 +167,7 @@ double precision floating type. Since floats are 32 bits, this gives us 23 bits
 for the significand, 8 bits for exponent and 1 sign bit; while the 64-bit
 double gives us double the precision, which translates to 52 bits of
 significand, 11 bits of exponent and 1 sign bit. 
-3. What are variables? How might we use them in our program?
+3. _What are variables? How might we use them in our program?_
 Variables are named identifiers associated with a chunk of stored data. We use
 variable names in our programs as a way to reference stored values, for example
 in mathematical computation we can store, access, change and keep track of
@@ -173,94 +175,96 @@ pre-computed values. By separating the name and value, we can also reassign new
 values for the old variable. Typically, functions dealing with variables can be
 split into accessor or mutator functions – as the name hints, we can either
 access the stored values or change the stored values.
-4. How do we declare variables in C?
+4. _How do we declare variables in C?_
 Since C is a static type, variable declaration looks like this: [type] [name] =
 [value or expression]. For example we can assign a float type variable the name
 wight and value of 14.2 using: float weight = 14.2. After the declaration you
 can just refer to the variable by its name without its type. We can also simply
 declare an uninitalized variable and define / assign it a value later: [type]
 [name], e.g. float weight;
-5. How do we create strings in C?
+5. _How do we create strings in C?_
 You can store a literal string in a type char * variable as in char *myString = "Here is a string";
-6. What is a char*?
+6. _What is a char*?_
 A char * is a pointer to a char variable, which can be treated like a char
 array that can represent a string.
-7. Write a simple if/else statement in C. 
-```
+7. _Write a simple if/else statement in C._
+```c
 if (rank == 1) {
     printf("You won!");
 } else {
     printf("You almost won…");
 }
 ```
-8. Explain what functions are and they help us write better code?
+8. _Explain what functions are and they help us write better code?_
 Functions are 
-9. Describe how strings are represented in C. What is the null terminator character?
-10. What is an array? How are they represented in C? How are strings and arrays related in C?
-11. What does void represent?
-12. What is argv? How does it work?
-13. What is a struct and why are they useful? Write a struct that represents an employee where an employ has a name, department, title and number of years on the job. 
-14. What is a memory address?
-15. What are pointers? How do we use them when programming in C?
-16. What is memory?
-17. How do we ask the operating system for memory using C?
-18. What is a segmentation fault?
-19. Describe what a memory leak is. How can we avoid them?
-20. What does it mean to pass-by-reference?
-21. What is the difference between the stack and the heap? How does C use these
+9. _Describe how strings are represented in C. What is the null terminator character?_
+10. _What is an array? How are they represented in C? How are strings and arrays related in C?_
+11. _What does void represent?_
+12. _What is argv? How does it work?_
+13. _What is a struct and why are they useful? Write a struct that represents
+an employee where an employ has a name, department, title and number of years
+on the job._ 
+14. _What is a memory address?_
+15. _What are pointers? How do we use them when programming in C?_
+16. _What is memory?_
+17. _How do we ask the operating system for memory using C?_
+18. _What is a segmentation fault?_
+19. _Describe what a memory leak is. How can we avoid them?_
+20. _What does it mean to pass-by-reference?_
+21. _What is the difference between the stack and the heap? How does C use these
 data structures to perform memory management? You should explain, step-bystep,
-the process and key functions used in C to accomplish this.
+the process and key functions used in C to accomplish this._
 
-Objective-C
-1. What are classes, what are objects? How are the two related?
+### Objective-C
+1. _What are classes, what are objects? How are the two related?_
 
-2. What are methods?
+2. _What are methods?_
 
-3. What are the difference between class methods and instance methods?
+3. _What are the difference between class methods and instance methods?_
 
-4. What does it mean to send a message in Objective-C? Give an example of how this works. 
-5. What are alloc and init? What are they used for? What C functions do they remind you of?
-6. How does memory management work in Objective-C? How does it differ and/or
-resemble memory management in C?
-7. What is NSString? How is it different from a regular C string?
+4. _What does it mean to send a message in Objective-C? Give an example of how this works._
+5. _What are alloc and init? What are they used for? What C functions do they remind you of?_
+6. _How does memory management work in Objective-C? How does it differ and/or
+resemble memory management in C?_
+7. _What is NSString? How is it different from a regular C string?_
 
-8. Name some ways that we can create arrays in Objective-C? How is this
-different from how we create arrays in C?
+8. _Name some ways that we can create arrays in Objective-C? How is this
+different from how we create arrays in C?_
 
-9. Explain what properties are. 
-10. What are instance variables?
-11. Explain what self is. 
-12. How does inheritance work in Objective-C?
-13. How do we override methods?
-14. Explain the "super" keyword. 
-15. Explain the inheritance hierarchy. 
-16. What are strong references?
+9. _Explain what properties are._
+10. _What are instance variables?_
+11. _Explain what self is._
+12. _How does inheritance work in Objective-C?_
+13. _How do we override methods?_
+14. _Explain the "super" keyword._
+15. _Explain the inheritance hierarchy._
+16. _What are strong references?_
 Strong means that you own the object that you will reference with this
 property/variable. Compiler will make sure that any objects that you assign to
 this property will not be destroyed as long as you p    oint it with a strong
 reference.
-17. What are weak references?
+17. _What are weak references?_
 Weak means that you dont want to have control over the object's lifetime. The
 object is only "ali    ve" because another object holds a strong reference to
-it. Once that is no longer the case, the object wi    ll be destroyed, and the
+it. Once that is no longer the case, the object will be destroyed, and the
 weak property will be set to nill.
-
-18. What are some ways that we can prevent memory leaks?
-19. What are immutable objects in Objective-C? Name some immutable objects. 
-20. What is the difference between an NSSet and an NSMutableSet?
-21. What is the difference between NSDictionary and NSMutable Dictionary?
-22. What are #import and #include used for?
-23. What are global variables?
-24. Explain what a callback is. How might callbacks be useful?
-25. Explain what a block is, what would we use one for?
-26. What are protocols? What do we use them for?
+18. _What are some ways that we can prevent memory leaks?_
+19. _What are immutable objects in Objective-C? Name some immutable objects._
+20. _What is the difference between an NSSet and an NSMutableSet?_
+21. _What is the difference between NSDictionary and NSMutable Dictionary?_
+22. _What are #import and #include used for?_
+23. _What are global variables?_
+24. _Explain what a callback is. How might callbacks be useful?_
+25. _Explain what a block is, what would we use one for?_
+26. _What are protocols? What do we use them for?_
 Protocols declare methods that can be implemented by any class. Used to provide
 a way for classes to share the same method and property declarations without
 inheriting them.
 
 Problem Solving
 
-1) Write a function that cubes the sum of three numbers and returns the result. Please complete this problem using C.
+1) _Write a function that cubes the sum of three numbers and returns the
+result. Please complete this problem using C._
 
 Compile with $ gcc sumcubed.c -o sumcubed
 Run with  $ ./sumcubed
@@ -291,7 +295,9 @@ int main (int argc, char **argv) {
 }
 ```
 
-2) If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000. Please complete this problem using C.
+2) _If we list all the natural numbers below 10 that are multiples of 3 or 5,
+we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the
+multiples of 3 or 5 below 1000. Please complete this problem using C._
 
 Compile with $ gcc multsummed.c -o multsummed
 Run with  $ ./multsummed
@@ -322,7 +328,7 @@ int main(int argc, char **argv) {
 }
 ```
 
-3) Write a short program that reverses a string using Objective-C.
+3) _Write a short program that reverses a string using Objective-C._
 
 Three methods: a) using char * and swapping the contents of the array indices
 2) saving characterAtIndex as a NSString and replaceCharactersInRange for
@@ -370,7 +376,11 @@ range of original string's length - reversed string's length - 1
 }
 ```
 
-4) In Objective-C write a simple class that represents a student. A student should have a first name, a last name, a major and a year (freshman, senior, etc.). Your student class should have two methods. One that allows the student to state his or her name and another that will allow the student to greet a person given a name.
+4) _In Objective-C write a simple class that represents a student. A student
+should have a first name, a last name, a major and a year (freshman, senior,
+etc.). Your student class should have two methods. One that allows the student
+to state his or her name and another that will allow the student to greet a
+person given a name._
 
 ```objective-c
 //

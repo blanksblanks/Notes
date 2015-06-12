@@ -208,37 +208,145 @@ if (rank == 1) {
 ```
 
 8. _Explain what functions are and they help us write better code?_
-Functions are 
+A function is a list of operations for the processor to execute. Every function
+has a name, for example 'main'. Functions have at least three benefits:
+reduction, reusability, and understandability. They can help us reduce
+repetitive typing. They can also be reused in another program or class.
+Finally, if there is a bug in numerous places but the problem lies in one
+function, fixing that function can fix the problems wherever it is invoked. In
+general, less code means less places for bugs to hide, and functions help you
+prevent unnecessarily repeating yourself.
 
 9. _Describe how strings are represented in C. What is the null terminator character?_
+In C, strings are represented as character arrays containing the characters and
+terminated with the null terminator character. The null terminator character is
+represented as '\0' or 0 in the ASCII chart. The length of a C string can be
+found by searching for the null terminator character. For example, the string
+"Hello" would look like this in C representation: ['H','e','l','l','o','\0']
 
 10. _What is an array? How are they represented in C? How are strings and arrays related in C?_
+An array is an ordered list of objects that are all of the same size and type.
+They are stored as a contiguous block of memory in C. The funny thing is their
+semantic representation in C - how they are evaluated in expressions. Within
+the local scope, you can have arrays, and use the sizeof operator to find the
+size; but outside the local scope the array evaluates the address of its first
+member. Therefore, in C arrays can be represented by the pointer to their first
+member. Strings and arrays are related in C because strings are nothing more
+than null-terminated char arrays.
 
 11. _What does void represent?_
+void represents nothing or no type. A function can look like ```void sayHi()```,
+which indicates the function returns nothing. Typically, if the parentheses
+were empty it would mean the function takes no parameters, but ```void sayHi(void)```
+would do the same thing - declare a function that takes nothing and returns nothing.
+Finally, we can also create generic data pointers with void as in ```void* p```
+where p is a pointer to data of an unknown type (note this cannot be
+dereferenced). 
 
 12. _What is argv? How does it work?_
+argv in c is the array of arguments being passed into your program from the
+command line, while argc is the number of arguments being passed into your
+program. Our main function can be defined as either ```int main(int argc, char
+**argv)``` or ```int main(int argc, char *argv[])```, in other words, its type
+is an array of char* (i.e. it is an array of strings). For example, if we have
+a program myadd that took in two argv, then we could run the program with
+```myadd 1 2``` and the program would access argv[1] and argv[2] (note argv[0]
+is always the name of the program) in order to sum them up and deliver us the
+result of 3.
 
 13. _What is a struct and why are they useful? Write a struct that represents
 an employee where an employ has a name, department, title and number of years
 on the job._ 
+A struct is an object that contains several related chunks of data, where
+unlike an array the members of the struct do not all have to be the same type
+and size. It is useful when you want to hold several chunks of data, or when
+you do not care about the ordering of the components as in the example of a
+struct Point p.x and p.y. Here is a struct that represents an employee:
+```
+struct Employee {
+    char *name;
+    char *department;
+    char *title;
+    int numberOfYearsOnTheJob;
+}
+```
 
 14. _What is a memory address?_
+Memory addresses is the location in memory where the value for a variable is
+stored. To get the address of the variable we use the % operator, and the
+string format specifier %p to print out the address - typically in hexademical
+format.
 
 15. _What are pointers? How do we use them when programming in C?_
+Pointers are variables that store addresses (not values) and can be null. In C,
+we use pointers as arrays, strings, and also for optimization. Perhaps you have
+an object (perhaps large) that you do not want to copy all the time between
+function calls, then you can just share the pointer at the same place in
+memory. 
 
 16. _What is memory?_
+Memory, at the most basic level, are series of switches that contain one bit of
+information and can be turned on and off. Programs typically run on high-speed
+primary memory like RAM, while there exist secondary memory which provide
+program and data storage. Every single process (i.e., a running program) gets
+512GB of virtual memory space. If we were to draw it out, it would look like this:
+```
+                  512G ---------------------
+                              stack
+                       ---------------------
+                                |
+                                v
+                                ^
+                                |
+                       ---------------------
+                               heap
+                       ---------------------
+                          static variables
+                       ---------------------
+                           program code
+                     0 ---------------------
+```
 
 17. _How do we ask the operating system for memory using C?_
+We ask the operating system to allocate a buffer of memory for us in C using malloc().
+When we are done with it, we call the function free() to release the memory and
+return it to the heap. The heap refers to a region of memory separate from the
+stack which is persistent even after the function ends.
 
 18. _What is a segmentation fault?_
+A segmentation fault (segfault) is an error caused by accessing memory that has
+either not been assigned by the operating system or that the program is not
+allowed to access. This can happen when you have an unintialized variable and
+try to access its value.
 
 19. _Describe what a memory leak is. How can we avoid them?_
+A memory leak happens when you have allocated some memory but forgot to free
+it, which is a resource leak that can impair performance. We can avoid them by
+keeping track of all the variables that are allocated on the heap, and freeing
+every single one of them.
 
 20. _What does it mean to pass-by-reference?_
+Pass-by-reference means to supply an address reference and the function puts
+the data there. It stands in contrast to passing by value, which would copy new
+data.
 
 21. _What is the difference between the stack and the heap? How does C use these
 data structures to perform memory management? You should explain, step-bystep,
 the process and key functions used in C to accomplish this._
+While the stack is a special region in your RAM that stores temporary variables
+created by each function, and when the function exits, all the variables are
+popped off the stack and lost forever. On the other hand, the heap is also a
+special region in your RAM, but when the function exits the heap variables
+remain until it is deleted by the programming; in other words, unlike stack
+memory, heap memory is not managed for you, and you have to allocate space and
+free it yourself. In multi-threaded applications, there is a different stack
+for each thread, but different threads will share the heap. Another big
+difference is that the stack is fixed in size, while the operating system can
+add more memory to the heap, so the heap does not have a limit on memory size,
+though it does suffer relatively slower access. As mentioned before, C
+automatically handles memory for your stack variables, but C requires the
+programmer to manually malloc() and free() heap variables. 
+
 
 ### Objective-C
 1. _What are classes, what are objects? How are the two related?_

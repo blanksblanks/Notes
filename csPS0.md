@@ -330,10 +330,11 @@ int main(int argc, char **argv) {
 
 3) _Write a short program that reverses a string using Objective-C._
 
-Three methods: a) using char * and swapping the contents of the array indices
-2) saving characterAtIndex as a NSString and replaceCharactersInRange for
+Three methods:
+a) using char * and swapping the contents of the array indices
+b) saving characterAtIndex as a NSString and replaceCharactersInRange for
 NSMutableString version of string
-3) declaring reversedString as NSMutableString type and appending the
+c) declaring reversedString as NSMutableString type and appending the
 characters from the original string backwards (by finding substring in the
 range of original string's length - reversed string's length - 1
 

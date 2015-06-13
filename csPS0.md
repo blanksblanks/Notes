@@ -350,19 +350,69 @@ programmer to manually malloc() and free() heap variables.
 
 ### Objective-C
 1. _What are classes, what are objects? How are the two related?_
+An object is like a struct in that it holds data, but it also contains
+functions that act upon that data. A class is a specific type of object which
+acts like a blueprint; it includes data, methods and instance variables where
+an object of this type stores its data. You ask a class to create an object of
+its type for you on the heap, and the result object is an instance of that class. 
 
 2. _What are methods?_
+In Objective-C, methods are functions that are triggered by a message.
 
 3. _What are the difference between class methods and instance methods?_
+Syntatically, class method begins with + while instance methods begin with -.
+Class methods can be called on classes without needing an instance, for example
+```[NSString stringWithString:@"Hello World"];```. Instance methods can only be
+invoked on an instance of a class, for example ```[myStringInstance length]```.
 
 4. _What does it mean to send a message in Objective-C? Give an example of how this works._
+To invoke a function of an object, we send a message to the object. A function
+that is triggeredby a message is more properly known as a method. The
+message-sending syntax in Objective-C is a little unusual compared to other
+programming languages in that it uses square brackets. An example of a message
+could be ```[Person sayHello]``` where Person is the object you are sending a
+message to and sayHello is the method you are calling.
 
 5. _What are alloc and init? What are they used for? What C functions do they remind you of?_
+alloc is a class method that returns a pointer to a new object that needs to be
+initialized. init is the message that is sent to the new object in order to
+initialize it. They are used to create objects in Objective-C, as in
+```[[NSDate alloc] init];```. alloc and init are similar to malloc(), though we
+do not have to worry about free() thanks to ARC.
 
 6. _How does memory management work in Objective-C? How does it differ and/or
 resemble memory management in C?_
+Unlike C, Objective-C does not require manual memory management. It does not
+use garbage collection like C# either. Instead, it uses a reference-counting
+environment that tracks how many places are using an object. As long as there
+is at least one reference to the object, the Objective-C runtime makes sure the
+object will reside in memory. Automatic Reference Counting (ARC) is a recent
+development in Objective-C (since Xcode 4.2), and prior to that we had to
+manage ownership counting and memory management manually. Manual reference
+counting is still available if you choose to turn off ARC. ARC manages the
+owner count of each object, and when an object does not have any owners, it is
+deallocated (sent the message dealloc). So even though it is automatically
+managed for you, the basic flow of alloc init and dealloc in Objective-C is the
+same pattern of malloc and free in C memory management.
 
 7. _What is NSString? How is it different from a regular C string?_
+NSString is an immutable Objective-C string class which is like an a glorified
+C array with a ton of useful methods in its class definition. Unlike a C
+string, we cannot change individual characters, and NSString will allocate a
+new string for each change. Even if you assign the new string to the same
+variable, new stirngs will still be generated behind the scenes. Some of its
+useful methods include:
+```
+-(NSUInteger) length
+-(unichar)characterAtIndex:(NSUInteger)theIndex
++(id)stringWithFormat:(NSString *)format ...
+-(NSString *)stringByAppendingString:(NSString *)aString 
+-(NSString *)stringByAppendingFormat:(NSString *)format ...
+-(NSString *)lowercaseString
+-(NSString *)substringWithRange:(NSRange)aRange
+-(NSRange)rangeOfString:(NSString *)aString
+-(NSString *)stringByReplacingOccurancesOfString:(NSString *)target withString:(NSString *)replacement
+```
 
 8. _Name some ways that we can create arrays in Objective-C? How is this
 different from how we create arrays in C?_
@@ -388,8 +438,8 @@ this property will not be destroyed as long as you point it with a strong
 reference.
 
 17. _What are weak references?_
-Weak means that you dont want to have control over the object's lifetime. The
-object is only "ali    ve" because another object holds a strong reference to
+Weak means that you don't want to have control over the object's lifetime. The
+object is only "alive" because another object holds a strong reference to
 it. Once that is no longer the case, the object will be destroyed, and the
 weak property will be set to nill.
 

@@ -390,10 +390,14 @@ object will reside in memory. Automatic Reference Counting (ARC) is a recent
 development in Objective-C (since Xcode 4.2), and prior to that we had to
 manage ownership counting and memory management manually. Manual reference
 counting is still available if you choose to turn off ARC. ARC manages the
-owner count of each object, and when an object does not have any owners, it is
-deallocated (sent the message dealloc). So even though it is automatically
-managed for you, the basic flow of alloc init and dealloc in Objective-C is the
-same pattern of malloc and free in C memory management.
+retain count of each object, and when an owner no longer needs an object, it
+sends the message release or autorelease (release decremeent the retain count
+immediately, while autorelease causes the message relrese to be sent when the
+autorelease pool is drained), and when an object has a retain count of 0 i.e.
+does not have any owners, it is deallocated (sent the message dealloc). So even
+though it is automatically managed for you, the basic flow of alloc init and
+dealloc in Objective-C is the same pattern of malloc and free in C memory
+management. 
 
 7. _What is NSString? How is it different from a regular C string?_
 NSString is an immutable Objective-C string class which is like an a glorified
@@ -416,42 +420,121 @@ useful methods include:
 
 8. _Name some ways that we can create arrays in Objective-C? How is this
 different from how we create arrays in C?_
+In C, we can create arrays in a number of ways. Since Objective-C is built on
+top of C, all the C methods for array creation - using pointers and pointer
+arithmetic or [] array notation works. Objective-C also introduces the NSArray
+and NSMutableArray classes. The NSArray class creates an immutable array with
+contents that cannot change without requesting new array. However, it can only
+store objects, which means we need boxing for primitives (i.e. if we have a
+float it needs to be converted into an NSNumber). NSMutableArray is a mutable
+subclass of NSArray that can extend or shrink arrays, though some of its
+methods may not be as efficient as a NSArray. While both NSArray and
+NSMutableArray brings lots of high level functionality and methods, boxing can
+be expensive, for graphics for example.
 
 9. _Explain what properties are._
+Properties is a convenience provided by Apple to simplify writing accessor
+methods for a class. With a property, we can declare both the setter and getter
+methods for a variable in one line. The syntax ```@property float
+heightInMeters``` in the .h file and ```@synthesize heightInMeters``` in the .m
+file essentially tell the compiler to synthesize default accessor methods based
+on each @property declaration, so we do not have to manually write the same
+repetive methods ```-(float) heightInMeters``` and ```-(void)
+setHeightInMeters:(float)meters``` for each property - @property and
+@synthesize do it for us! 
 
 10. _What are instance variables?_
+Instance variables are as the name suggests variables that belond to a certain
+instance. Sometimes instance variables are primitive types, but are more
+commonly pointers to other objects, so an object instance variables normally
+points ot another objects and describes a realtionship to them. Object instance
+variables can fall into three categories: a) object-type attributes: a pointer
+to a simple value-like object like an NSString or an NSNumber b) to-one
+relationships: a pointer to a single complex object, c) to-many relationships:
+a pointer to an instance of a collection class, like an NSMutableArray
 
 11. _Explain what self is._
+self is a pointer to the object that is running the method, and we use it when
+an object wants to send a message to itself (i.e. call its own method). For
+instance, if we were making a game we could send the message ```[self
+updateScore]```.
 
 12. _How does inheritance work in Objective-C?_
+In Objective-C inheritance, all objects either directly or indirectly are a
+subclass of NSObject. All subclasses inherit allthe instance variables and
+methods from its superclass. For example, NSArray is a subclass of NSObject,
+and NSMutableArray is a subclass of NSArray. Therefore every instance of
+NSMutableArray will have the instance variables and methods defined in itself,
+in NSArray, and in NSObject.
 
 13. _How do we override methods?_
+When a message is sent, the search for the method of that name starts at the
+object class and goes up the inheritance hierarchy, where the first
+implementation is found is the one executed. Therefore, you can override
+inherited methods simply by reimplementing it with your desired definition in
+your new class. For example, if Employee inherits from Person, then you can
+override a method by reimplementing it in your Employee class, and that
+override the inherited method by the same name.
 
 14. _Explain the "super" keyword._
+The super directive means that the search for the method of that name starts at
+the superclass rather than the class calling it, and use the implementation of
+the superclass for that method. For example you can say ```[super
+bodyMassIndex]``` in the Employee class, and it will run the bodyMassIndex
+method from the Person class it is inheritng from. 
 
 15. _Explain the inheritance hierarchy._
 
 16. _What are strong references?_
 Strong means that you own the object that you will reference with this
-property/variable. Compiler will make sure that any objects that you assign to
+property/variable. The compiler will make sure that any objects that you assign to
 this property will not be destroyed as long as you point it with a strong
 reference.
 
 17. _What are weak references?_
-Weak means that you don't want to have control over the object's lifetime. The
+A weak reference is a pointer that does not imply ownership. In other words,
+weak means that you don't want to have control over the object's lifetime. The
 object is only "alive" because another object holds a strong reference to
 it. Once that is no longer the case, the object will be destroyed, and the
-weak property will be set to nill.
+weak property will be set to nil. Weak references can help us fix retain cycle
+issues. In a parent-child relationship, the general rule for preventing retain
+cycles is that the parent owns the child, but the child should not own the
+parent.
 
 18. _What are some ways that we can prevent memory leaks?_
+To find memory leaks in our program, we can use Instruments, the Apple
+profiling tool, to monitor what is happening behind the scenes with our code
+and the system during runtime. Instruments has a profiling instrument called
+Leaks and Cycles which can show us what objects are still living on the heap
+after the program runs or look for retain cycles respectively. We can preevent
+memory leaks by using strong and weak references appropriately if we are (as we
+usually are) using ARC. 
 
 19. _What are immutable objects in Objective-C? Name some immutable objects._
+Immutable objects are objects that cannot have their values changed. Immutable
+objects include NSArray, NSString, NSSet, NSDictionary, NSAttributedString,
+NSData, NSCharacterSet, NSIndexSet and NSURLRequest. Immutable objects exist
+for at least two reasons, because you want to protect the data and disallow
+people from changing it, and the next reason is performance: an immutable
+object never needs to be copied. 
 
 20. _What is the difference between an NSSet and an NSMutableSet?_
+NSSet is an unordered collection of objects with unique elements, optimized for
+memeber checking. So is NSMutableSet, which is a subclass of NSSet and inherits
+all its methods, but in addition NSMutableSet has addition methods to change
+the set, such as addObject, removeObject, and unionSet (to combine with another
+set).
 
 21. _What is the difference between NSDictionary and NSMutable Dictionary?_
+Similar to the difference between NSSet and NSMutableSet, NSMutableDictionary
+is a mutable subclass of NSDictionary, which allows you to add key-value
+objects or delete them from the collection. NSDictionary and
+NSMutableDictionary are essentially associative arrays with unordered
+associations of key-value pairs. Interestingly, the keys and values can be any
+object, so we can even, say map string commands to functions.
 
 22. _What are #import and #include used for?_
+
 
 23. _What are global variables?_
 

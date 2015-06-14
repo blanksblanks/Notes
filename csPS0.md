@@ -534,7 +534,13 @@ associations of key-value pairs. Interestingly, the keys and values can be any
 object, so we can even, say map string commands to functions.
 
 22. _What are #import and #include used for?_
-
+#include and #import request that the proprocessor read a file and add it to
+its output. #import ensures that the prprocessor only includes a file once.
+#include allows you to include the same file many times, and is generally used
+by C programmers, while Objective-C programmers tend to use #import. If the
+header file you with to include is located in your project directory your wrap
+the filename in "", while angle brackets indicate the header is in one of the
+standard locations that the preprocessor knows about.
 
 23. _What are global variables?_
 

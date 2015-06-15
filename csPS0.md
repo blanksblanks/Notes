@@ -484,6 +484,13 @@ bodyMassIndex]``` in the Employee class, and it will run the bodyMassIndex
 method from the Person class it is inheritng from. 
 
 15. _Explain the inheritance hierarchy._
+The inheritance hierarchy works as I described in q13 - when a message is sent,
+the search for the method of the name starts at the object class, goes up to
+its superclass, goes up the superclass of its superclass, and so on up the
+inheritance hierarchy until it finds the first implementation of that method
+and executes it. In short, the inheritance hierarchy starts at the base class,
+and moves up the superclasses level by level. For example: Employee : Person :
+NSObject.
 
 16. _What are strong references?_
 Strong means that you own the object that you will reference with this
@@ -534,8 +541,8 @@ associations of key-value pairs. Interestingly, the keys and values can be any
 object, so we can even, say map string commands to functions.
 
 22. _What are #import and #include used for?_
-#include and #import request that the proprocessor read a file and add it to
-its output. #import ensures that the prprocessor only includes a file once.
+#include and #import request that the preprocessor read a file and add it to
+its output. #import ensures that the preprocessor only includes a file once.
 #include allows you to include the same file many times, and is generally used
 by C programmers, while Objective-C programmers tend to use #import. If the
 header file you with to include is located in your project directory your wrap
@@ -543,15 +550,69 @@ the filename in "", while angle brackets indicate the header is in one of the
 standard locations that the preprocessor knows about.
 
 23. _What are global variables?_
+Global variables are constant variables that can be used outside its local
+scope, in a global scope, in other classes. You declare a global variable in
+the .h file as in ```extern NSString const *NSLocaleCurrencyCode;``` and
+defined in the .m file as in ```NSString const *NSLocaleCurrencyCode =
+@"currency";```. Since this is part of the Foundation Framework, so long as you
+import the Foundation Framework you can directly reference this global variable
+NSLocaleCurrencyCode.
 
 24. _Explain what a callback is. How might callbacks be useful?_
+Callbacks allow other objects to call methods in response to events.
+A callback in iOS is when NSRunLoop, which is waiting for an event to happen,
+sends a message to another object when the event appens. There are three types
+of callbacks: a) target-action: when x happens, send this message (action) to
+this object (target), b) helper objects: when x happens, send a message to this
+helper object (usually a delegate or data source) that conforms to your
+protocol, c) notifications: when x happens, post a notification to the
+notification center, and center forwards it to your object. The first kind is
+useful for event-driven programming, allowing us to set up the program in a
+cleaner way that separates the Model, View and Controller so users can click on
+any element on the UI, like a button, and the appropriate object will be sent a
+message. Callbacks is a useful mechanism for injecting behavior into
+frameworks, because we could use the UIButton, which already has inherited the
+concept of doing x when it is pressed - all we have to do is define what x is,
+instead of define a whole new class. Asynchronous callbacks, like the example
+of fetching data from a web server, are also very useful, because if we fetched
+data synchronously, the function would block the main thread while waiting for
+all the data to arrive, causing the UI to become unresponsive. By using
+NSURLConnection aynchronously, we can start fetching and await callback as the
+data arrives or fetch fails. Additionally, asynchronous callbacks can notify us
+if the webserver wants credentials like a user name and password. In short,
+target-action is useful for sending one callback to one object. Helper objects
+are useful for sending an assortment of callbacks to one object. Notification
+callbacks are useful in situations when the callback needs to go to multiple
+objects (subscribers).
 
 25. _Explain what a block is, what would we use one for?_
+An Objective-C block is a chunk of code like a C function that can be passed
+around as data. Blocks are like anonymous functions, closures or lambda
+functions, and accomplish what function pointers in C do in an easier way to
+read (for example they can be defined inline). They let you pass arbitrary
+statements between objects, as you would data. As blocks are implemented as
+closures, that means they also have to access to non-local variables, i.e.
+outside the block itself (copied over as const variables like a snapshot,
+though we can override the const copy behavior with a __block storage modifier
+to capture the variable by reference rather than value). The syntax for
+declaring a block variable looks a lot like C function pointers with a return
+type, the name of the block variable (prefixed by a ^) and comma-delimited data
+types for the arguments of the block, as in ```void (^devowelizer)(id,
+NSUInteger, BOOL*)```. The data type for such a block would be void (^)(id,
+NSUInteger, BOOL*). Blocks are useful as parameters for methods like NSArray's
+enumerateObjectsUsingBlock or NSNotificationCenter's
+addObserverForName:object:queue:usingBlock: or asynchronous data requestion
+functions that will execute different blocks of code depending on whether the
+outcome was 'success' or 'failure'. 
 
 26. _What are protocols? What do we use them for?_
-Protocols declare methods that can be implemented by any class. Used to provide
-a way for classes to share the same method and property declarations without
-inheriting them.
+Protocols declare methods that can be implemented by any class. For example,
+NSURLConnection has a list of method declarations (a protocol) that the helper
+object can implement. Protocols are used to provide a way for classes to
+share the same method and property declarations without inheriting them.
+Protocols contain optional and required methods, and optional methods; so if an
+object is to fulfill a certain role, like the data source of a UITableView
+class, it must implement the required methods from the protocol.
 
 ### Problem Solving
 

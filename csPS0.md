@@ -11,6 +11,7 @@ that you take detailed notes as you complete the video lectures and readings as
 this will help you reinforce your learning. 
 
 ### Pre-work Part I: C, Programming and Computer Science
+
 Watch the video lectures for weeks 0 - 5 of Harvard’s CS50 course. While
 watching these lectures you are to also read chapters 1 - 12 of Objective-C
 Programming, The Big Nerd Ranch Guide, as it covers a lot of the same material
@@ -20,6 +21,7 @@ will help you develop a solid foundation that will help you become a strong
 developer.
 
 ### Pre-work Part II: Objective-C
+
 Read chapters 13 - 30 of Objective-C Programming, The Big Nerd Ranch Guide.
 During this portion of the pre-work you gain a solid understanding of the
 Objective-C programming language, which is used to build both iOS and OS X
@@ -30,22 +32,25 @@ will be expected to spend a minimum of two hours a day working on assignments
 outside of class so you should use this opportunity to get into this habit. 
 
 ### Links to Pre-work Material 
+
 Harvard CS50: https://cs50.harvard.edu/lectures
+
 Objective-C Programming, The Big Nerd Ranch Guide:
 https://www.bignerdranch.com/documents/objective-c-prereading-assignment.pdf
 
 ### Basic Information 
+
 Full Name: Nina Baculinao
+
 Email address: nb2406@columbia.edu
 
 ### Programming Basics 
 1. _To the best of your ability, describe the difference between programming and computer science._ 
-Computer science is the theoretical study of what computation is and what
+Computer science is the theoretical study ("science") of what computation is and what
 computers can do; it’s concerned with runtime complexity, NP-hard/complete
 problem classification, compilers, etc. Programming is writing programs that do
-what they have been designed to do and can be maintained. Let’s call computer
-science "the science of computation": running some algorithm, or set of
-instructions, on inputs, to produce some output, or solution.
+what they have been designed to do and can be maintained. Both involve running some
+algorithm, or set of instructions, on inputs, to produce some output.
 
 2. _What is binary?_
 Computers only understand zeroes and ones, an alphabet called binary. While
@@ -53,10 +58,14 @@ humans use decimal, which has 10 digits 0-9, computers only understand binary,
 which has two digits, 0 and 1. With just two digits, we can still represent
 almost every possible piece of information. Binary represents numbers in the
 same pattern, but using powers of 2 instead of powers of 10 that decimal uses.
+For instance, the number 2 can be represented in 4-bit form as 0010.
 
 3. _What are bits?_
 Bits (binary digits) are the smallest unit of storage in a computer, storing
-data of a 0 or 1.
+data of a 0 or 1. With just 4 bits, we can represent 2^4 = 16 unique tokens.
+If we were representing an unsigned int with 4 bits, the numbers could range
+from 0 to 16. If we were representing positive and negative numbers with 4
+bits using two's complement, we could represent the number range -8 - 7. 
 
 4. _What are bytes?_
 Bytes are a unit of data that are eight binary digits long; typically at the
@@ -72,9 +81,24 @@ with different languages and writing systems.
 6. _What are algorithms? Using pseudo code, write an algorithm that will reverse a string._
 Algorithms are just a step-by-step set of operations to be performed in
 calculations or other problem-solving exercises, typically by a computer.
-Note: Pseudocode is written similarly to Python, but wouldn not actually work
-this cleanly since strings are immutable in Python
-
+If we implement a string as a list with indices 0-n where n is the string
+length-1, for example 'hello' would be represented as:
+```
+[h][e][l][l][o]
+ 0  1  2  3  4
+```
+then this pseudocode can be used to reverse a string:
+```
+set index (of string) to 0
+set length to length of string
+while index < length/2:
+(i.e. until we reach the middle of the string)
+    swap the letter at the index and the letter at length - 1 - index
+    (i.e. swap first letter and last letter)
+    increment index (i.e. move on to the next letter)
+```
+More code-like pseudocode would look like below. Note it's written in Python
+syntax but this code block would not run as Python strings are immutable.
 ```python
 for (idx = 0; idx != len(str)/2; i++):
     temp = str[idx]
@@ -124,31 +148,28 @@ version control for our files using git commands, change our system
 preferences, and so on. 
 
 ### The C Programming Language 
+
 1. _What are header files and what are they used for? Write an example of how
 you would use a header file below._
  Header files are files that end with .h where you can include the declaration
 / protype / signature of  functions defined in a .c file with the same prefix.
 It is used during the compiling phase, before linking. A typical header file
-would look like this. 
-
-main.c
-
+could look like this.
+adder.h
 ```c
-#include <stdio.h> 
-#include "myadd.h"  
-    int main(int argc, char **argv) {   
-        printf("The sum is: %d \n", add(1, 2));   
-        return 0; 
-    }
+#ifndef __MYADD_H__
+#define __MYADD_H__
+int add(int a, int b);
+#endif
 ```
-
-```c
-myadd.c
-#include "myadd.h" 
-int add(int x, int y) {     
-    return x + y; 
-}
-```
+From our main.c, we can ```#include "adder.h"```, so the compiler can look at
+the header file and know that a function called add exists. Then we can invoke
+this method in our main file with ```int x = add(1, 2);```. As long as the
+return type and argument types match, the compiler won't complain, so header
+files are a useful way of sharing functions across files and error-checking.
+Interestingly, if we don't actually implement the add function in adder.c, then
+errors will only arise during the linking phase - for the compiler, knowing the
+header declarations match the invocation in main.c would be enough.
 
 2. _List the different types used in C along with their size. What’s the
 difference between int, float and double?_
@@ -331,7 +352,7 @@ the data there. It stands in contrast to passing by value, which would copy new
 data.
 
 21. _What is the difference between the stack and the heap? How does C use these
-data structures to perform memory management? You should explain, step-bystep,
+data structures to perform memory management? You should explain, step-by-step,
 the process and key functions used in C to accomplish this._
 While the stack is a special region in your RAM that stores temporary variables
 created by each function, and when the function exits, all the variables are
@@ -347,7 +368,6 @@ though it does suffer relatively slower access. As mentioned before, C
 automatically handles memory for your stack variables, but C requires the
 programmer to manually malloc() and free() heap variables. 
 
-
 ### Objective-C
 1. _What are classes, what are objects? How are the two related?_
 An object is like a struct in that it holds data, but it also contains
@@ -357,7 +377,7 @@ an object of this type stores its data. You ask a class to create an object of
 its type for you on the heap, and the result object is an instance of that class. 
 
 2. _What are methods?_
-In Objective-C, methods are functions that are triggered by a message.
+In Objective-C, methods are object functions that are triggered by a message.
 
 3. _What are the difference between class methods and instance methods?_
 Syntatically, class method begins with + while instance methods begin with -.
@@ -515,7 +535,15 @@ and the system during runtime. Instruments has a profiling instrument called
 Leaks and Cycles which can show us what objects are still living on the heap
 after the program runs or look for retain cycles respectively. We can preevent
 memory leaks by using strong and weak references appropriately if we are (as we
-usually are) using ARC. 
+usually are) using ARC. The chapters on Callbacks and Blocks in The Big Nerd
+Ranch Guide to Objective-C Programming detail other tips for memory management
+when using callbacks and blocks. For callbacks, there are three key rules to keep
+in mind: a) notification centers do not own their observers; b) objects  do not own
+their delegates or data sources, c) objects do not own their targets. In terms of
+blocks, the block keeps a strong reference to any object it references, so any
+objects referred to by the block are guaranteed to live as long as the block itself
+- to avoid retain cycles and circular references, we can declare a __weak pointer
+outside the block and reference the pointer within this block instead.
 
 19. _What are immutable objects in Objective-C? Name some immutable objects._
 Immutable objects are objects that cannot have their values changed. Immutable

@@ -83,28 +83,28 @@ Algorithms are just a step-by-step set of operations to be performed in
 calculations or other problem-solving exercises, typically by a computer.
 If we implement a string as a list with indices 0-n where n is the string
 length-1, for example 'hello' would be represented as:
-```
-[h][e][l][l][o]
- 0  1  2  3  4
-```
+    ```
+    [h][e][l][l][o]
+     0  1  2  3  4
+    ```
 then this pseudocode can be used to reverse a string:
-```
-set index (of string) to 0
-set length to length of string
-while index < length/2:
-(i.e. until we reach the middle of the string)
-    swap the letter at the index and the letter at length - 1 - index
-    (i.e. swap first letter and last letter)
-    increment index (i.e. move on to the next letter)
-```
+    ```
+    set index (of string) to 0
+    set length to length of string
+    while index < length/2:
+    (i.e. until we reach the middle of the string)
+        swap the letter at the index and the letter at length - 1 - index
+        (i.e. swap first letter and last letter)
+        increment index (i.e. move on to the next letter)
+    ```
 More code-like pseudocode would look like below. Note it's written in Python
 syntax but this code block would not run as Python strings are immutable.
-```python
-for (idx = 0; idx != len(str)/2; i++):
-    temp = str[idx]
-    str[idx] = str[len(str)-idx-1]
-    str[len(str)-idx-1] = temp
-```
+    ```python
+    for (idx = 0; idx != len(str)/2; i++):
+        temp = str[idx]
+        str[idx] = str[len(str)-idx-1]
+        str[len(str)-idx-1] = temp
+    ```
 
 7. **What does it mean to compile your code? Describe how a compiler works.** 
 Compiling your code is the act of translating your source code written in a
@@ -156,12 +156,12 @@ you would use a header file below.**
 It is used during the compiling phase, before linking. A typical header file
 could look like this.
 adder.h
-```c
-#ifndef __MYADD_H__
-#define __MYADD_H__
-int add(int a, int b);
-#endif
-```
+    ```c
+    #ifndef __MYADD_H__
+    #define __MYADD_H__
+    int add(int a, int b);
+    #endif
+    ```
 From our main.c, we can ```#include "adder.h"```, so the compiler can look at
 the header file and know that a function called add exists. Then we can invoke
 this method in our main file with ```int x = add(1, 2);```. As long as the
@@ -171,19 +171,19 @@ Interestingly, if we don't actually implement the add function in adder.c, then
 errors will only arise during the linking phase - for the compiler, knowing the
 header declarations match the invocation in main.c would be enough.
 
-2. _List the different types used in C along with their size. What’s the
+2. **List the different types used in C along with their size. What’s the
 difference between int, float and double?**
-```
- char    1 byte
- short   2 bytes
- int     4 bytes
- float   4 bytes
- long    8 bytes
- doubl   8 bytes
- pointer 8 bytes
- struct  - varies depending on its components, for example a struct with a
+    ```
+     char    1 byte
+     short   2 bytes
+     int     4 bytes
+     float   4 bytes
+     long    8 bytes
+     doubl   8 bytes
+     pointer 8 bytes
+     struct  - varies depending on its components, for example a struct with a
            (x,y) coordinate where x and y are both ints would be 8 bytes
-```
+    ```
 Also note that these sizes can vary system to system; I verified the sizes on
 my system for these different types with sizeof(). As the name suggests, int
 only stores integers, and because it is 4 bytes (or 32 bits), it can store
@@ -220,13 +220,13 @@ A char * is a pointer to a char variable, which can be treated like a char
 array that can represent a string.
 
 7. **Write a simple if/else statement in C.**
-```c
-if (rank == 1) {
-    printf("You won!");
-} else {
-    printf("You almost won…");
-}
-```
+    ```c
+    if (rank == 1) {
+        printf("You won!");
+    } else {
+        printf("You almost won…");
+    }
+    ```
 
 8. **Explain what functions are and they help us write better code?**
 A function is a list of operations for the processor to execute. Every function
@@ -283,14 +283,14 @@ unlike an array the members of the struct do not all have to be the same type
 and size. It is useful when you want to hold several chunks of data, or when
 you do not care about the ordering of the components as in the example of a
 struct Point p.x and p.y. Here is a struct that represents an employee:
-```
-struct Employee {
-    char *name;
-    char *department;
-    char *title;
-    int numberOfYearsOnTheJob;
-}
-```
+    ```
+    struct Employee {
+        char *name;
+        char *department;
+        char *title;
+        int numberOfYearsOnTheJob;
+    }
+    ```
 
 14. **What is a memory address?**
 Memory addresses is the location in memory where the value for a variable is
@@ -311,7 +311,7 @@ information and can be turned on and off. Programs typically run on high-speed
 primary memory like RAM, while there exist secondary memory which provide
 program and data storage. Every single process (i.e., a running program) gets
 512GB of virtual memory space. If we were to draw it out, it would look like this:
-```
+    ```
                   512G ---------------------
                               stack
                        ---------------------
@@ -326,7 +326,7 @@ program and data storage. Every single process (i.e., a running program) gets
                        ---------------------
                            program code
                      0 ---------------------
-```
+    ```
 
 17. **How do we ask the operating system for memory using C?**
 We ask the operating system to allocate a buffer of memory for us in C using malloc().
@@ -426,17 +426,17 @@ string, we cannot change individual characters, and NSString will allocate a
 new string for each change. Even if you assign the new string to the same
 variable, new stirngs will still be generated behind the scenes. Some of its
 useful methods include:
-```
--(NSUInteger) length
--(unichar)characterAtIndex:(NSUInteger)theIndex
-+(id)stringWithFormat:(NSString *)format ...
--(NSString *)stringByAppendingString:(NSString *)aString 
--(NSString *)stringByAppendingFormat:(NSString *)format ...
--(NSString *)lowercaseString
--(NSString *)substringWithRange:(NSRange)aRange
--(NSRange)rangeOfString:(NSString *)aString
--(NSString *)stringByReplacingOccurancesOfString:(NSString *)target withString:(NSString *)replacement
-```
+    ```
+    -(NSUInteger) length
+    -(unichar)characterAtIndex:(NSUInteger)theIndex
+    +(id)stringWithFormat:(NSString *)format ...
+    -(NSString *)stringByAppendingString:(NSString *)aString 
+    -(NSString *)stringByAppendingFormat:(NSString *)format ...
+    -(NSString *)lowercaseString
+    -(NSString *)substringWithRange:(NSRange)aRange
+    -(NSRange)rangeOfString:(NSString *)aString
+    -(NSString *)stringByReplacingOccurancesOfString:(NSString *)target withString:(NSString *)replacement
+    ```
 
 8. **Name some ways that we can create arrays in Objective-C? How is this
 different from how we create arrays in C?**

@@ -45,14 +45,14 @@ Full Name: Nina Baculinao
 Email address: nb2406@columbia.edu
 
 ### Programming Basics 
-1. _To the best of your ability, describe the difference between programming and computer science._ 
+1. **To the best of your ability, describe the difference between programming and computer science.** 
 Computer science is the theoretical study ("science") of what computation is and what
 computers can do; it’s concerned with runtime complexity, NP-hard/complete
 problem classification, compilers, etc. Programming is writing programs that do
 what they have been designed to do and can be maintained. Both involve running some
 algorithm, or set of instructions, on inputs, to produce some output.
 
-2. _What is binary?_
+2. **What is binary?**
 Computers only understand zeroes and ones, an alphabet called binary. While
 humans use decimal, which has 10 digits 0-9, computers only understand binary,
 which has two digits, 0 and 1. With just two digits, we can still represent
@@ -60,25 +60,25 @@ almost every possible piece of information. Binary represents numbers in the
 same pattern, but using powers of 2 instead of powers of 10 that decimal uses.
 For instance, the number 2 can be represented in 4-bit form as 0010.
 
-3. _What are bits?_
+3. **What are bits?**
 Bits (binary digits) are the smallest unit of storage in a computer, storing
 data of a 0 or 1. With just 4 bits, we can represent 2^4 = 16 unique tokens.
 If we were representing an unsigned int with 4 bits, the numbers could range
 from 0 to 16. If we were representing positive and negative numbers with 4
 bits using two's complement, we could represent the number range -8 - 7. 
 
-4. _What are bytes?_
+4. **What are bytes?**
 Bytes are a unit of data that are eight binary digits long; typically at the
 smallest scale in the computer, we group information in bits and bytes.
 
-5. _What is ASCII?_
+5. **What is ASCII?**
 ASCII (American Standard Code for Information Interchange) is an encoding by
 which each alphabetic, numeric or special character is mapped to a 7-bit binary
 number. There are only 128 possible characters defined in ASCII, though Unicode
 exists as an effort to include a more international encoding standard for use
 with different languages and writing systems.
 
-6. _What are algorithms? Using pseudo code, write an algorithm that will reverse a string._
+6. **What are algorithms? Using pseudo code, write an algorithm that will reverse a string.**
 Algorithms are just a step-by-step set of operations to be performed in
 calculations or other problem-solving exercises, typically by a computer.
 If we implement a string as a list with indices 0-n where n is the string
@@ -106,7 +106,7 @@ for (idx = 0; idx != len(str)/2; i++):
     str[len(str)-idx-1] = temp
 ```
 
-7. _What does it mean to compile your code? Describe how a compiler works._ 
+7. **What does it mean to compile your code? Describe how a compiler works.** 
 Compiling your code is the act of translating your source code written in a
 high-level programming language such as C, Java, Python, etc. into the native
 machine code of your computer. A compiler is a program that translates the
@@ -119,7 +119,7 @@ code is to create an executable program. In short, a compiler converts a
 program from a human-readable format into a machine-readable instructions.
 Every compiler is written to process source files in a particular language. 
 
-8. _What is the new line character? How does it work?_
+8. **What is the new line character? How does it work?**
 In Unix systems, the newline character is represented by the escape
 sequence ```\n```; in Windows system it is represented by two characters ```\n\r```
 (where \r is carriage return, originating from the need to manually push the
@@ -133,7 +133,7 @@ text file in, for example a C program, we typically read/scan the file line by
 line, using the newlines to find out where an old line ends and a new one
 begins.
 
-9. _What is the terminal or command line? How can we use it as developers?_
+9. **What is the terminal or command line? How can we use it as developers?**
 The terminal / command-line interface is a user interface that we can use to
 interact with our computer’s operating system and execute various programs.
 It’s a more concise and powerful way we can control our computer compared to
@@ -149,8 +149,8 @@ preferences, and so on.
 
 ### The C Programming Language 
 
-1. _What are header files and what are they used for? Write an example of how
-you would use a header file below._
+1. **What are header files and what are they used for? Write an example of how
+you would use a header file below.**
  Header files are files that end with .h where you can include the declaration
 / protype / signature of  functions defined in a .c file with the same prefix.
 It is used during the compiling phase, before linking. A typical header file
@@ -172,7 +172,7 @@ errors will only arise during the linking phase - for the compiler, knowing the
 header declarations match the invocation in main.c would be enough.
 
 2. _List the different types used in C along with their size. What’s the
-difference between int, float and double?_
+difference between int, float and double?**
 ```
  char    1 byte
  short   2 bytes
@@ -195,7 +195,7 @@ for the significand, 8 bits for exponent and 1 sign bit; while the 64-bit
 double gives us double the precision, which translates to 52 bits of
 significand, 11 bits of exponent and 1 sign bit. 
 
-3. _What are variables? How might we use them in our program?_
+3. **What are variables? How might we use them in our program?**
 Variables are named identifiers associated with a chunk of stored data. We use
 variable names in our programs as a way to reference stored values, for example
 in mathematical computation we can store, access, change and keep track of
@@ -204,7 +204,7 @@ values for the old variable. Typically, functions dealing with variables can be
 split into accessor or mutator functions – as the name hints, we can either
 access the stored values or change the stored values.
 
-4. _How do we declare variables in C?_
+4. **How do we declare variables in C?**
 Since C is a static type, variable declaration looks like this: ```[type] [name] =
 [value or expression]```. For example we can assign a float type variable the name
 wight and value of 14.2 using: ```float weight = 14.2```. After the declaration you
@@ -212,14 +212,14 @@ can just refer to the variable by its name without its type. We can also simply
 declare an uninitalized variable and define / assign it a value later: ```[type]
 [name]```, e.g. ```float weight;```
 
-5. _How do we create strings in C?_
+5. **How do we create strings in C?**
 You can store a literal string in a type char * variable as in char *myString = "Here is a string";
 
-6. _What is a char*?_
+6. **What is a char*?**
 A char * is a pointer to a char variable, which can be treated like a char
 array that can represent a string.
 
-7. _Write a simple if/else statement in C._
+7. **Write a simple if/else statement in C.**
 ```c
 if (rank == 1) {
     printf("You won!");
@@ -228,7 +228,7 @@ if (rank == 1) {
 }
 ```
 
-8. _Explain what functions are and they help us write better code?_
+8. **Explain what functions are and they help us write better code?**
 A function is a list of operations for the processor to execute. Every function
 has a name, for example 'main'. Functions have at least three benefits:
 reduction, reusability, and understandability. They can help us reduce
@@ -238,14 +238,14 @@ function, fixing that function can fix the problems wherever it is invoked. In
 general, less code means less places for bugs to hide, and functions help you
 prevent unnecessarily repeating yourself.
 
-9. _Describe how strings are represented in C. What is the null terminator character?_
+9. **Describe how strings are represented in C. What is the null terminator character?**
 In C, strings are represented as character arrays containing the characters and
 terminated with the null terminator character. The null terminator character is
 represented as '\0' or 0 in the ASCII chart. The length of a C string can be
 found by searching for the null terminator character. For example, the string
 "Hello" would look like this in C representation: ['H','e','l','l','o','\0']
 
-10. _What is an array? How are they represented in C? How are strings and arrays related in C?_
+10. **What is an array? How are they represented in C? How are strings and arrays related in C?**
 An array is an ordered list of objects that are all of the same size and type.
 They are stored as a contiguous block of memory in C. The funny thing is their
 semantic representation in C - how they are evaluated in expressions. Within
@@ -255,7 +255,7 @@ member. Therefore, in C arrays can be represented by the pointer to their first
 member. Strings and arrays are related in C because strings are nothing more
 than null-terminated char arrays.
 
-11. _What does void represent?_
+11. **What does void represent?**
 void represents nothing or no type. A function can look like ```void sayHi()```,
 which indicates the function returns nothing. Typically, if the parentheses
 were empty it would mean the function takes no parameters, but ```void sayHi(void)```
@@ -264,7 +264,7 @@ Finally, we can also create generic data pointers with void as in ```void* p```
 where p is a pointer to data of an unknown type (note this cannot be
 dereferenced). 
 
-12. _What is argv? How does it work?_
+12. **What is argv? How does it work?**
 argv in c is the array of arguments being passed into your program from the
 command line, while argc is the number of arguments being passed into your
 program. Our main function can be defined as either ```int main(int argc, char
@@ -275,9 +275,9 @@ a program myadd that took in two argv, then we could run the program with
 is always the name of the program) in order to sum them up and deliver us the
 result of 3.
 
-13. _What is a struct and why are they useful? Write a struct that represents
+13. **What is a struct and why are they useful? Write a struct that represents
 an employee where an employ has a name, department, title and number of years
-on the job._ 
+on the job.** 
 A struct is an object that contains several related chunks of data, where
 unlike an array the members of the struct do not all have to be the same type
 and size. It is useful when you want to hold several chunks of data, or when
@@ -292,20 +292,20 @@ struct Employee {
 }
 ```
 
-14. _What is a memory address?_
+14. **What is a memory address?**
 Memory addresses is the location in memory where the value for a variable is
 stored. To get the address of the variable we use the % operator, and the
 string format specifier %p to print out the address - typically in hexademical
 format.
 
-15. _What are pointers? How do we use them when programming in C?_
+15. **What are pointers? How do we use them when programming in C?**
 Pointers are variables that store addresses (not values) and can be null. In C,
 we use pointers as arrays, strings, and also for optimization. Perhaps you have
 an object (perhaps large) that you do not want to copy all the time between
 function calls, then you can just share the pointer at the same place in
 memory. 
 
-16. _What is memory?_
+16. **What is memory?**
 Memory, at the most basic level, are series of switches that contain one bit of
 information and can be turned on and off. Programs typically run on high-speed
 primary memory like RAM, while there exist secondary memory which provide
@@ -328,32 +328,32 @@ program and data storage. Every single process (i.e., a running program) gets
                      0 ---------------------
 ```
 
-17. _How do we ask the operating system for memory using C?_
+17. **How do we ask the operating system for memory using C?**
 We ask the operating system to allocate a buffer of memory for us in C using malloc().
 When we are done with it, we call the function free() to release the memory and
 return it to the heap. The heap refers to a region of memory separate from the
 stack which is persistent even after the function ends.
 
-18. _What is a segmentation fault?_
+18. **What is a segmentation fault?**
 A segmentation fault (segfault) is an error caused by accessing memory that has
 either not been assigned by the operating system or that the program is not
 allowed to access. This can happen when you have an unintialized variable and
 try to access its value.
 
-19. _Describe what a memory leak is. How can we avoid them?_
+19. **Describe what a memory leak is. How can we avoid them?**
 A memory leak happens when you have allocated some memory but forgot to free
 it, which is a resource leak that can impair performance. We can avoid them by
 keeping track of all the variables that are allocated on the heap, and freeing
 every single one of them.
 
-20. _What does it mean to pass-by-reference?_
+20. **What does it mean to pass-by-reference?**
 Pass-by-reference means to supply an address reference and the function puts
 the data there. It stands in contrast to passing by value, which would copy new
 data.
 
-21. _What is the difference between the stack and the heap? How does C use these
+21. **What is the difference between the stack and the heap? How does C use these
 data structures to perform memory management? You should explain, step-by-step,
-the process and key functions used in C to accomplish this._
+the process and key functions used in C to accomplish this.**
 While the stack is a special region in your RAM that stores temporary variables
 created by each function, and when the function exits, all the variables are
 popped off the stack and lost forever. On the other hand, the heap is also a
@@ -369,23 +369,23 @@ automatically handles memory for your stack variables, but C requires the
 programmer to manually malloc() and free() heap variables. 
 
 ### Objective-C
-1. _What are classes, what are objects? How are the two related?_
+1. **What are classes, what are objects? How are the two related?**
 An object is like a struct in that it holds data, but it also contains
 functions that act upon that data. A class is a specific type of object which
 acts like a blueprint; it includes data, methods and instance variables where
 an object of this type stores its data. You ask a class to create an object of
 its type for you on the heap, and the result object is an instance of that class. 
 
-2. _What are methods?_
+2. **What are methods?**
 In Objective-C, methods are object functions that are triggered by a message.
 
-3. _What are the difference between class methods and instance methods?_
+3. **What are the difference between class methods and instance methods?**
 Syntatically, class method begins with + while instance methods begin with -.
 Class methods can be called on classes without needing an instance, for example
 ```[NSString stringWithString:@"Hello World"];```. Instance methods can only be
 invoked on an instance of a class, for example ```[myStringInstance length]```.
 
-4. _What does it mean to send a message in Objective-C? Give an example of how this works._
+4. **What does it mean to send a message in Objective-C? Give an example of how this works.**
 To invoke a function of an object, we send a message to the object. A function
 that is triggeredby a message is more properly known as a method. The
 message-sending syntax in Objective-C is a little unusual compared to other
@@ -393,15 +393,15 @@ programming languages in that it uses square brackets. An example of a message
 could be ```[Person sayHello]``` where Person is the object you are sending a
 message to and sayHello is the method you are calling.
 
-5. _What are alloc and init? What are they used for? What C functions do they remind you of?_
+5. **What are alloc and init? What are they used for? What C functions do they remind you of?**
 alloc is a class method that returns a pointer to a new object that needs to be
 initialized. init is the message that is sent to the new object in order to
 initialize it. They are used to create objects in Objective-C, as in
 ```[[NSDate alloc] init];```. alloc and init are similar to malloc(), though we
 do not have to worry about free() thanks to ARC.
 
-6. _How does memory management work in Objective-C? How does it differ and/or
-resemble memory management in C?_
+6. **How does memory management work in Objective-C? How does it differ and/or
+resemble memory management in C?**
 Unlike C, Objective-C does not require manual memory management. It does not
 use garbage collection like C# either. Instead, it uses a reference-counting
 environment that tracks how many places are using an object. As long as there
@@ -419,7 +419,7 @@ though it is automatically managed for you, the basic flow of alloc init and
 dealloc in Objective-C is the same pattern of malloc and free in C memory
 management. 
 
-7. _What is NSString? How is it different from a regular C string?_
+7. **What is NSString? How is it different from a regular C string?**
 NSString is an immutable Objective-C string class which is like an a glorified
 C array with a ton of useful methods in its class definition. Unlike a C
 string, we cannot change individual characters, and NSString will allocate a
@@ -438,8 +438,8 @@ useful methods include:
 -(NSString *)stringByReplacingOccurancesOfString:(NSString *)target withString:(NSString *)replacement
 ```
 
-8. _Name some ways that we can create arrays in Objective-C? How is this
-different from how we create arrays in C?_
+8. **Name some ways that we can create arrays in Objective-C? How is this
+different from how we create arrays in C?**
 In C, we can create arrays in a number of ways. Since Objective-C is built on
 top of C, all the C methods for array creation - using pointers and pointer
 arithmetic or [] array notation works. Objective-C also introduces the NSArray
@@ -452,7 +452,7 @@ methods may not be as efficient as a NSArray. While both NSArray and
 NSMutableArray brings lots of high level functionality and methods, boxing can
 be expensive, for graphics for example.
 
-9. _Explain what properties are._
+9. **Explain what properties are.**
 Properties is a convenience provided by Apple to simplify writing accessor
 methods for a class. With a property, we can declare both the setter and getter
 methods for a variable in one line. The syntax ```@property float
@@ -463,7 +463,7 @@ repetive methods ```-(float) heightInMeters``` and ```-(void)
 setHeightInMeters:(float)meters``` for each property - @property and
 @synthesize do it for us! 
 
-10. _What are instance variables?_
+10. **What are instance variables?**
 Instance variables are as the name suggests variables that belond to a certain
 instance. Sometimes instance variables are primitive types, but are more
 commonly pointers to other objects, so an object instance variables normally
@@ -473,13 +473,13 @@ to a simple value-like object like an NSString or an NSNumber b) to-one
 relationships: a pointer to a single complex object, c) to-many relationships:
 a pointer to an instance of a collection class, like an NSMutableArray
 
-11. _Explain what self is._
+11. **Explain what self is.**
 self is a pointer to the object that is running the method, and we use it when
 an object wants to send a message to itself (i.e. call its own method). For
 instance, if we were making a game we could send the message ```[self
 updateScore]```.
 
-12. _How does inheritance work in Objective-C?_
+12. **How does inheritance work in Objective-C?**
 In Objective-C inheritance, all objects either directly or indirectly are a
 subclass of NSObject. All subclasses inherit allthe instance variables and
 methods from its superclass. For example, NSArray is a subclass of NSObject,
@@ -487,7 +487,7 @@ and NSMutableArray is a subclass of NSArray. Therefore every instance of
 NSMutableArray will have the instance variables and methods defined in itself,
 in NSArray, and in NSObject.
 
-13. _How do we override methods?_
+13. **How do we override methods?**
 When a message is sent, the search for the method of that name starts at the
 object class and goes up the inheritance hierarchy, where the first
 implementation is found is the one executed. Therefore, you can override
@@ -496,14 +496,14 @@ your new class. For example, if Employee inherits from Person, then you can
 override a method by reimplementing it in your Employee class, and that
 override the inherited method by the same name.
 
-14. _Explain the "super" keyword._
+14. **Explain the "super" keyword.**
 The super directive means that the search for the method of that name starts at
 the superclass rather than the class calling it, and use the implementation of
 the superclass for that method. For example you can say ```[super
 bodyMassIndex]``` in the Employee class, and it will run the bodyMassIndex
 method from the Person class it is inheritng from. 
 
-15. _Explain the inheritance hierarchy._
+15. **Explain the inheritance hierarchy.**
 The inheritance hierarchy works as I described in q13 - when a message is sent,
 the search for the method of the name starts at the object class, goes up to
 its superclass, goes up the superclass of its superclass, and so on up the
@@ -512,13 +512,13 @@ and executes it. In short, the inheritance hierarchy starts at the base class,
 and moves up the superclasses level by level. For example: Employee : Person :
 NSObject.
 
-16. _What are strong references?_
+16. **What are strong references?**
 Strong means that you own the object that you will reference with this
 property/variable. The compiler will make sure that any objects that you assign to
 this property will not be destroyed as long as you point it with a strong
 reference.
 
-17. _What are weak references?_
+17. **What are weak references?**
 A weak reference is a pointer that does not imply ownership. In other words,
 weak means that you don't want to have control over the object's lifetime. The
 object is only "alive" because another object holds a strong reference to
@@ -528,7 +528,7 @@ issues. In a parent-child relationship, the general rule for preventing retain
 cycles is that the parent owns the child, but the child should not own the
 parent.
 
-18. _What are some ways that we can prevent memory leaks?_
+18. **What are some ways that we can prevent memory leaks?**
 To find memory leaks in our program, we can use Instruments, the Apple
 profiling tool, to monitor what is happening behind the scenes with our code
 and the system during runtime. Instruments has a profiling instrument called
@@ -545,7 +545,7 @@ objects referred to by the block are guaranteed to live as long as the block its
 - to avoid retain cycles and circular references, we can declare a __weak pointer
 outside the block and reference the pointer within this block instead.
 
-19. _What are immutable objects in Objective-C? Name some immutable objects._
+19. **What are immutable objects in Objective-C? Name some immutable objects.**
 Immutable objects are objects that cannot have their values changed. Immutable
 objects include NSArray, NSString, NSSet, NSDictionary, NSAttributedString,
 NSData, NSCharacterSet, NSIndexSet and NSURLRequest. Immutable objects exist
@@ -553,14 +553,14 @@ for at least two reasons, because you want to protect the data and disallow
 people from changing it, and the next reason is performance: an immutable
 object never needs to be copied. 
 
-20. _What is the difference between an NSSet and an NSMutableSet?_
+20. **What is the difference between an NSSet and an NSMutableSet?**
 NSSet is an unordered collection of objects with unique elements, optimized for
 memeber checking. So is NSMutableSet, which is a subclass of NSSet and inherits
 all its methods, but in addition NSMutableSet has addition methods to change
 the set, such as addObject, removeObject, and unionSet (to combine with another
 set).
 
-21. _What is the difference between NSDictionary and NSMutable Dictionary?_
+21. **What is the difference between NSDictionary and NSMutable Dictionary?**
 Similar to the difference between NSSet and NSMutableSet, NSMutableDictionary
 is a mutable subclass of NSDictionary, which allows you to add key-value
 objects or delete them from the collection. NSDictionary and
@@ -568,16 +568,16 @@ NSMutableDictionary are essentially associative arrays with unordered
 associations of key-value pairs. Interestingly, the keys and values can be any
 object, so we can even, say map string commands to functions.
 
-22. _What are #import and #include used for?_
-#include and #import request that the preprocessor read a file and add it to
-its output. #import ensures that the preprocessor only includes a file once.
-#include allows you to include the same file many times, and is generally used
+22. **What are #import and #include used for?**
+```#include``` and ```#import``` request that the preprocessor read a file and add it to
+its output. ```#import``` ensures that the preprocessor only includes a file once.
+```#include``` allows you to include the same file many times, and is generally used
 by C programmers, while Objective-C programmers tend to use #import. If the
 header file you with to include is located in your project directory your wrap
-the filename in "", while angle brackets indicate the header is in one of the
+the filename in double quotes, while angle brackets indicate the header is in one of the
 standard locations that the preprocessor knows about.
 
-23. _What are global variables?_
+23. **What are global variables?**
 Global variables are constant variables that can be used outside its local
 scope, in a global scope, in other classes. You declare a global variable in
 the .h file as in ```extern NSString const *NSLocaleCurrencyCode;``` and
@@ -586,7 +586,7 @@ defined in the .m file as in ```NSString const *NSLocaleCurrencyCode =
 import the Foundation Framework you can directly reference this global variable
 NSLocaleCurrencyCode.
 
-24. _Explain what a callback is. How might callbacks be useful?_
+24. **Explain what a callback is. How might callbacks be useful?**
 Callbacks allow other objects to call methods in response to events.
 A callback in iOS is when NSRunLoop, which is waiting for an event to happen,
 sends a message to another object when the event appens. There are three types
@@ -613,7 +613,7 @@ are useful for sending an assortment of callbacks to one object. Notification
 callbacks are useful in situations when the callback needs to go to multiple
 objects (subscribers).
 
-25. _Explain what a block is, what would we use one for?_
+25. **Explain what a block is, what would we use one for?**
 An Objective-C block is a chunk of code like a C function that can be passed
 around as data. Blocks are like anonymous functions, closures or lambda
 functions, and accomplish what function pointers in C do in an easier way to
@@ -628,12 +628,12 @@ type, the name of the block variable (prefixed by a ^) and comma-delimited data
 types for the arguments of the block, as in ```void (^devowelizer)(id,
 NSUInteger, BOOL*)```. The data type for such a block would be void (^)(id,
 NSUInteger, BOOL*). Blocks are useful as parameters for methods like NSArray's
-enumerateObjectsUsingBlock or NSNotificationCenter's
-addObserverForName:object:queue:usingBlock: or asynchronous data requestion
+```enumerateObjectsUsingBlock``` or NSNotificationCenter's
+```addObserverForName:object:queue:usingBlock:``` or asynchronous data requestion
 functions that will execute different blocks of code depending on whether the
 outcome was 'success' or 'failure'. 
 
-26. _What are protocols? What do we use them for?_
+26. **What are protocols? What do we use them for?**
 Protocols declare methods that can be implemented by any class. For example,
 NSURLConnection has a list of method declarations (a protocol) that the helper
 object can implement. Protocols are used to provide a way for classes to
@@ -644,8 +644,8 @@ class, it must implement the required methods from the protocol.
 
 ### Problem Solving
 
-1) _Write a function that cubes the sum of three numbers and returns the
-result. Please complete this problem using C._
+1) **Write a function that cubes the sum of three numbers and returns the
+result. Please complete this problem using C.**
 
 Compile with ```$ gcc sumcubed.c -o sumcubed```
 Run with  ```$ ./sumcubed```
@@ -676,9 +676,9 @@ int main (int argc, char **argv) {
 }
 ```
 
-2) _If we list all the natural numbers below 10 that are multiples of 3 or 5,
+2) **If we list all the natural numbers below 10 that are multiples of 3 or 5,
 we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the
-multiples of 3 or 5 below 1000. Please complete this problem using C._
+multiples of 3 or 5 below 1000. Please complete this problem using C.**
 
 Compile with ```$ gcc multsummed.c -o multsummed```
 Run with  ```$ ./multsummed```
@@ -709,7 +709,7 @@ int main(int argc, char **argv) {
 }
 ```
 
-3) _Write a short program that reverses a string using Objective-C._
+3) **Write a short program that reverses a string using Objective-C.**
 
 Three methods:
 a) using char * and swapping the contents of the array indices
@@ -758,11 +758,11 @@ range of original string's length - reversed string's length - 1
 }
 ```
 
-4) _In Objective-C write a simple class that represents a student. A student
+4) **In Objective-C write a simple class that represents a student. A student
 should have a first name, a last name, a major and a year (freshman, senior,
 etc.). Your student class should have two methods. One that allows the student
 to state his or her name and another that will allow the student to greet a
-person given a name._
+person given a name.**
 
 ```objective-c
 //

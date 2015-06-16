@@ -40,9 +40,9 @@ https://www.bignerdranch.com/documents/objective-c-prereading-assignment.pdf
 
 ### Basic Information 
 
-Full Name: Nina Baculinao
+**Full Name:** Nina Baculinao
 
-Email address: nb2406@columbia.edu
+**Email address:** nb2406@columbia.edu
 
 ### Programming Basics 
 1. **To the best of your ability, describe the difference between programming and computer science.** 
@@ -712,10 +712,10 @@ int main(int argc, char **argv) {
 3) **Write a short program that reverses a string using Objective-C.**
 
 Three methods:
-a) using char * and swapping the contents of the array indices
-b) saving characterAtIndex as a NSString and replaceCharactersInRange for
+* using char * and swapping the contents of the array indices
+* saving characterAtIndex as a NSString and replaceCharactersInRange for
 NSMutableString version of string
-c) declaring reversedString as NSMutableString type and appending the
+* declaring reversedString as NSMutableString type and appending the
 characters from the original string backwards (by finding substring in the
 range of original string's length - reversed string's length - 1
 

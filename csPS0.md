@@ -720,6 +720,36 @@ characters from the original string backwards (by finding substring in the
 range of original string's length - reversed string's length - 1
 
 ```objective-c
+//
+//  StringReversal.h
+//  PS0
+//
+//  Created by Nina Baculinao on 6/15/15.
+//  Copyright (c) 2015 Nina Baculinao. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface StringReversal : NSObject
+
+- (NSString *)reverseString1:(NSString *)aString;
+- (NSString *)reverseString2:(NSString *)aString;
+- (NSString *)reverseString3:(NSString *)aString;
+
+@end
+
+//
+//  StringReversal.m
+//  CodestarsPS0
+//
+//  Created by Nina Baculinao on 6/8/15
+//  Copyright (c) 2015 Nina Baculinao. All rights reserved.
+//
+
+#import "StringReversal.h"
+
+@implementation StringReversal
+
 - (NSString *)reverseString1:(NSString *)aString {
     aString = [NSString stringWithFormat:@"%@", aString];
     NSUInteger length = [aString length];
@@ -756,6 +786,37 @@ range of original string's length - reversed string's length - 1
     }
     return reversedString;
 }
+
+@end
+
+
+//
+//  main.m
+//  CodestarsPS0
+//
+//  Created by Nina Baculinao on 6/8/15.
+//  Copyright (c) 2015 Nina Baculinao. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "StringReversal.h"
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        StringReversal *reverser = [[StringReversal alloc] init];
+        NSLog(@"%@", [reverser reverseString1:@"Can you read this in reverse?"]);
+        NSLog(@"%@", [reverser reverseString2:@"How about now?"]);
+        NSLog(@"%@", [reverser reverseString3:@"Hello"]);
+    }
+    return 0;
+}
+```
+Console Log:
+```
+2015-06-15 23:44:17.942 PS0[81211:8811835] ?esrever ni siht daer uoy naC
+2015-06-15 23:44:17.944 PS0[81211:8811835] ?won tuoba woH
+2015-06-15 23:44:17.944 PS0[81211:8811835] olleH
+Program ended with exit code: 0
 ```
 
 4) **In Objective-C write a simple class that represents a student. A student
@@ -825,4 +886,32 @@ person given a name.**
 
 @end
 
+//
+//  main.m
+//  CodestarsPS0
+//
+//  Created by Nina Baculinao on 6/8/15.
+//  Copyright (c) 2015 Nina Baculinao. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "Student.h"
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        Student* aStudent = [[Student alloc] initWithFirstName:@"Molly" lastName:@"Meowmeow" year:@"Senior" andMajor:@"Princess"];
+        [aStudent sayName];
+        [aStudent sayHelloTo:@"Happy"];
+        [aStudent setFirstName:@"Meowly"];
+        [aStudent sayName];
+    }
+    return 0;
+}
+```
+Console Log:
+```
+2015-06-15 23:34:31.306 PS0[81091:8807329] Molly: My name is Molly Meowmeow
+2015-06-15 23:34:31.309 PS0[81091:8807329] Molly: Hello Happy
+2015-06-15 23:34:31.309 PS0[81091:8807329] Meowly: My name is Meowly Meowmeow
+Program ended with exit code: 0
 ```
